@@ -22,48 +22,40 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-
-var HelloWorldLayer = cc.Layer.extend({
-    sprite:null,
-    ctor:function () {
-        //////////////////////////////
-        // 1. super init first
-        this._super();
-
-        /////////////////////////////
-        // 2. add a menu item with "X" image, which is clicked to quit the program
-        //    you may modify it.
-        // ask the window size
-        var size = cc.winSize;
-
-        /////////////////////////////
-        // 3. add your codes below...
-        // add a label shows "Hello World"
-        // create and initialize a label
-        var helloLabel = new cc.LabelTTF("Hello World", "Arial", 38);
-        // position the label on the center of the screen
-        helloLabel.x = size.width / 2;
-        helloLabel.y = size.height / 2 + 200;
-        // add the label as a child to this layer
-        this.addChild(helloLabel, 5);
-
-        // add "HelloWorld" splash screen"
-        this.sprite = new cc.Sprite(res.HelloWorld_png);
-        this.sprite.attr({
-            x: size.width / 2,
-            y: size.height / 2
-        });
-        this.addChild(this.sprite, 0);
-
-        return true;
-    }
-});
-
 var HelloWorldScene = cc.Scene.extend({
-    onEnter:function () {
+    gameBkg: null,
+    ctor:function()
+        {
         this._super();
-        var layer = new HelloWorldLayer();
-        this.addChild(layer);
+            cc.eventManager.addListener({
+                event: cc.EventListener.TOUCH_ONE_BY_ONE,
+                swallowTouches: true,
+                onTouchBegan: function (touch, event) 
+                {
+                    var target = event.getCurrentTarget();
+                    var location = target.convertToNodeSpace(touch.getLocation());
+                    //var locationTouch = target.convertTouchToNodeSpace(touch.getLocation());
+                    //cc.log(location+"  "+locationTouch);
+                    return true;
+                },
+                onTouchEnded: function (touch, event)
+                {  
+                    var target = event.getCurrentTarget().gameBkg;
+                    var location = target.convertToNodeSpace(touch.getLocation());
+                    cc.log(location);
+                        //target.detectHitDir(cc.p(location.x,location.y));
+                    return true;    
+                },
+        }, this);
+        },
+        
+    onEnterTransitionDidFinish:function () {
+        this._super();
+        
+        var gameBkg = new mapLayer();
+        gameBkg.setAnchorPoint(0.5,0.5);
+        gameBkg.setPosition(cc.winSize.width*0.25,cc.winSize.height*0.2);
+        this.addChild(gameBkg)
     }
 });
 

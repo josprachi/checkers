@@ -23,6 +23,8 @@
  ****************************************************************************/
 
 var res = {
+    gameBoardMap:"res/Tiles.png",
+    gameBoardTMX:"res/GameBkg.tmx",
     HelloWorld_png : "res/HelloWorld.png",
 };
 
