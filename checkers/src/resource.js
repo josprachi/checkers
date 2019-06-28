@@ -25,6 +25,10 @@
 var res = {
     gameBoardMap:"res/Tiles.png",
     gameBoardTMX:"res/GameBkg.tmx",
+    blueManPng:"res/checkersBlue.png",
+    redManPng:"res/checkersRed.png",
+    blueKingPng:"res/checkersBlueStar.png",
+    redKingPng:"res/checkersRedStar.png",
     HelloWorld_png : "res/HelloWorld.png",
 };
 
