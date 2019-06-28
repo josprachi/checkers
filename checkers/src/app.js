@@ -90,9 +90,12 @@ var HelloWorldScene = cc.Scene.extend({
         //this.cel.setPosition(1,1);
         this.addChild(this.gameBkg)
         this.playerLayer = new HelloWorldLayer();
-        var pos=this.gameBkg._tilePositions;//this.gameBkg.convertToWorldSpace(this.gameBkg.getPosition());
+        var pos=this.gameBkg.getInitPositions();//_tilePositions;//this.gameBkg.convertToWorldSpace(this.gameBkg.getPosition());
+        cc.log(pos.length);
         this.playerLayer.setInitialPositions(pos);//this.gameBkg._tilemap._mainLayer.getPositionAt(cc.p(2,2)));//this.gameBkg.getPositionOfTile(2,2));
         this.addChild(this.playerLayer);
+        cc.log("positions");
+        cc.log(this.gameBkg.getInitPositions().length);
         
     }
 });

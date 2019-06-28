@@ -27,10 +27,14 @@ var mapLayer = cc.TMXLayer.extend({
 			for(var i=0;i<8;i++){
 				for(var j=0;j<8;j++)
 				{
-					this._tilePositions.push(this.getPositionOfTile(cc.p(i,j)));
+					this._tilePositions.push(this.getPositionOfTile(cc.p(j,i)));
 				}
 			}
-			
+
+		},
+		getInitPositions()
+		{
+			return this._tilePositions;
 
 		},
 		getPositionOfTile:function(pos)

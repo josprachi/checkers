@@ -4,24 +4,46 @@ aliveMen:0,
 _color:null,
 ctor:function()
 {
-	for(var i=0;i<11;i++)
+	for(var i=0;i<12;i++)
 	{
 		this.men.push(new man());
 	}
-//return true;
+	cc.log(this.men.length);
+return true;
 },
 init:function(color,positions)
 {
-//this.color=color;
-this.setInitialPositions(positions);
+	cc.log("here");
+this._color=color;
+this.initMen(color);
+
+return true;
+//this.setInitialPositions(positions);
 },
 update:function(dt){},
+initMen:function(color)
+{
+for(var i=0;i<this.men.length;i++)
+ {
+  if(color=="BLUE")
+  {	
+  	cc.log("blue");
+  this.men[i].init(color,res.blueManPng,res.blueKingPng);
+  }
+  else
+  {
+  	 this.men[i].init(color,res.redManPng,res.redKingPng);
+  }	
+  //this.addChild(this.men[i]);
+ }
+},
 setInitialPositions:function(positions)
 {
-for(var i=0;i<11;i++)
+for(var i=0;i<12;i++)
 	{
-		this.men[i].setPosition(positions[i]);
+		this.men[i].setPosition(positions[i*2]);		
 	}
+	
 },
 detectPossibleMoves:function(){},
 move:function(man,destPosition){},
@@ -40,7 +62,7 @@ var man=cc.Sprite.extend({
 	kingTexture:null,
 	_color:null,
 	ctor:function(name)
-	{cc.log("here");
+	{//cc.log("here");
 		this._super(name);
 		
 	},
@@ -77,13 +99,19 @@ var HelloWorldLayer = cc.Layer.extend({
   var size = cc.winSize;
         this.player1=new Player();
         this.player2=new Player();
+        this.player1.init("BLUE");
+        this.player2.init("RED");
+        this.addChild(this.player1);
+        this.addChild(this.player2);
         return true;
     },
 
 setInitialPositions(position)
 {
-this.player1.setInitialPositions(position.splice(0,31));
-this.player2.setInitialPositions(position.splice(32,63));
+//cc.log("position length "+position.length);
+this.player1.setInitialPositions(position.slice(0,32));
+this.player2.setInitialPositions(position.slice(32,63));
+//cc.log("position length ** "+position.length);
 //this.manSpr.setPosition(position);
 },
 update : function (dt) {
