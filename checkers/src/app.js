@@ -30,6 +30,7 @@ var HelloWorldScene = cc.Scene.extend({
     ctor:function()
         {
         this._super();
+        cc.log("onenter");
             cc.eventManager.addListener({
                 event: cc.EventListener.TOUCH_ONE_BY_ONE,
                 swallowTouches: true,
@@ -75,6 +76,7 @@ var HelloWorldScene = cc.Scene.extend({
         
     onEnterTransitionDidFinish:function () {
         this._super();
+        cc.log("onEnterTransitionDidFinish");
         
         this.gameBkg = new mapLayer();
         //this.manSprite = new man(res.blueManPng);
@@ -85,17 +87,17 @@ var HelloWorldScene = cc.Scene.extend({
         this.gameBkg.init();
         this.gameBkg.setAnchorPoint(0.5,0.5);
         this.gameBkg.setPosition(cc.winSize.width*0.25,cc.winSize.height*0.2);
-        cc.log(this.gameBkg.convertToWorldSpace(this.gameBkg.getPosition()));//this.gameBkg.getPosition()));
-        //this.gameBkg.addChild(this.cel);
-        //this.cel.setPosition(1,1);
+        //cc.log(this.gameBkg.convertToWorldSpace(this.gameBkg.getPosition()));//this.gameBkg.getPosition()));
+        
         this.addChild(this.gameBkg)
         this.playerLayer = new HelloWorldLayer();
         var pos=this.gameBkg.getInitPositions();//_tilePositions;//this.gameBkg.convertToWorldSpace(this.gameBkg.getPosition());
-        cc.log(pos.length);
-        this.playerLayer.setInitialPositions(pos);//this.gameBkg._tilemap._mainLayer.getPositionAt(cc.p(2,2)));//this.gameBkg.getPositionOfTile(2,2));
+        //cc.log(pos.length);
         this.addChild(this.playerLayer);
+        this.playerLayer.setInitialPositions(pos);//this.gameBkg._tilemap._mainLayer.getPositionAt(cc.p(2,2)));//this.gameBkg.getPositionOfTile(2,2));
+       /* 
         cc.log("positions");
         cc.log(this.gameBkg.getInitPositions().length);
-        
+        */
     }
 });

@@ -2,10 +2,11 @@ var mapLayer = cc.TMXLayer.extend({
 		_tilemap:null,
 		_tileWidth:null,
 		_tileHeight:null,
-		_tilePositions:[],
+		_tilePositions:null,
 		ctor:function (mapNo)
 		{
 			this._super();
+			this._tilePositions=[];
 			var c = cc.winSize;
 			this._tilemap = new gameMap(res.gameBoardTMX);			
 					
@@ -27,7 +28,15 @@ var mapLayer = cc.TMXLayer.extend({
 			for(var i=0;i<8;i++){
 				for(var j=0;j<8;j++)
 				{
-					this._tilePositions.push(this.getPositionOfTile(cc.p(j,i)));
+					if(i%2==0 && j%2==0)
+					{
+						this._tilePositions.push(this.getPositionOfTile(cc.p(j,i)));
+					}
+					else if(i%2==1 && j%2==1)
+					{
+						this._tilePositions.push(this.getPositionOfTile(cc.p(j,i)));
+					}
+
 				}
 			}
 
