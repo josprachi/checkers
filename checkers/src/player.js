@@ -41,14 +41,30 @@ for(var i=0;i<12;i++)
 		this.men[i].setPosition(positions[i]);		
 	}	
 },
-update:function(dt){},
-detectPossibleMoves:function(){},
-move:function(man,destPosition){},
-killMan:function(man){},
+update:function(dt)
+{
+
+},
+
+detectPossibleMoves:function()
+{
+
+},
+
+move:function(man,destPosition)
+{
+
+},
+
+killMan:function(man)
+{
+},
+
 promoteMan:function(man)
 {
  man.promoteToKing();
 },
+
 });
 var man=cc.Sprite.extend({
 	canMove:false,
@@ -64,7 +80,7 @@ var man=cc.Sprite.extend({
 	},
 init:function(normalTexture,KingTexture,bcolor)
 {
-this._super();
+        this._super();
 		this.initWithFile(normalTexture);
 		this._color=bcolor;
 		this.normalTexture=normalTexture;
@@ -104,7 +120,7 @@ var HelloWorldLayer = cc.Layer.extend({
         return true;
     },
 
-setInitialPositions(position)
+setInitialPositions:function(position)
 {
 this.player1.setInitialPositions(position.slice(0,12));
 this.player2.setInitialPositions(position.slice(20,32));

@@ -29,6 +29,8 @@ var res = {
     redManPng:"res/checkersRed.png",
     blueKingPng:"res/checkersBlueStar.png",
     redKingPng:"res/checkersRedStar.png",
+    tileIndicatorPng:"res/TileIndicator.png",
+    tileIndicator2Png:"res/TileIndicator2.png",
     HelloWorld_png : "res/HelloWorld.png",
 };
 

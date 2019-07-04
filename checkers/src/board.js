@@ -41,7 +41,7 @@ var mapLayer = cc.TMXLayer.extend({
 			}
 
 		},
-		getInitPositions()
+		getInitPositions:function()
 		{
 			return this._tilePositions;
 
@@ -60,6 +60,7 @@ var mapLayer = cc.TMXLayer.extend({
 			pos.y=7-pos.y;
 			cc.log(pos);
 			tile=this._tilemap._mainLayer.getTileAt(pos);
+			//tile.setColor(cc.color(255,255,255));
 			return this._tilemap._mainLayer.getTileAt(pos);//touchPosition);
 		},
 		
@@ -89,11 +90,11 @@ var gameMap= cc.TMXTiledMap.extend({
 		this._mainLayer=this.getLayer("BkgLayer");
 		
 		},
-		getTileWidth()
+		getTileWidth:function()
 		{
 			return this._mainLayer.tileWidth;
 		},
-		getTileHeight()
+		getTileHeight:function()
 		{
 			return this._mainLayer.tileHeight;
 		},
